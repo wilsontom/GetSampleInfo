@@ -5,7 +5,7 @@
 #'
 #' @param x a \code{.raw} file
 #' @return a \code{data.frame} of sample information
-#'
+#' @importFrom tibble as_tibble
 #' @export
 
 GetSampleInfo <- function(x)
@@ -22,15 +22,15 @@ GetSampleInfo <- function(x)
   cmd_res <- as.list(system(input_cmd, intern = TRUE))
 
   res_split <- lapply(cmd_res, function(x)
-    (strsplit(x, '--')))
+    (strsplit(x, ' -- ')))
 
   field <- lapply(res_split, function(x)
     (x[[1]][1]))
   value <- lapply(res_split, function(x)
     (x[[1]][2]))
 
-  SampleInfo <-
-    data.frame(field = unlist(field), value = unlist(value))
+  names(value) <- field
+  value <- as_tibble(value)
 
-  return(SampleInfo)
+  return(value)
 }
