@@ -56,7 +56,7 @@ internal static class Program
             Console.WriteLine("path -- " + rawFile.SampleInformation.Path);
             Console.WriteLine("instrument_method -- " + rawFile.SampleInformation.InstrumentMethodFile);
             Console.WriteLine("process_method -- " + rawFile.SampleInformation.ProcessingMethodFile);
-            Console.WriteLine("positiion -- " + rawFile.SampleInformation.Vial);
+            Console.WriteLine("position -- " + rawFile.SampleInformation.Vial);
             Console.WriteLine("inj_vol -- " + rawFile.SampleInformation.InjectionVolume);
             Console.WriteLine("level -- " + rawFile.SampleInformation.CalibrationLevel);
             Console.WriteLine("sample_wt -- " + rawFile.SampleInformation.SampleWeight);
