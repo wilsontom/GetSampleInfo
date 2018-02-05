@@ -53,7 +53,7 @@ internal static class Program
             Console.WriteLine("sample_type -- " + rawFile.SampleInformation.SampleType);
             Console.WriteLine("file_name -- " + rawFile.SampleInformation.RawFileName);
             Console.WriteLine("sample_id -- " + rawFile.SampleInformation.SampleId);
-            Console.WriteLine("path --" + rawFile.SampleInformation.Path);
+            Console.WriteLine("path -- " + rawFile.SampleInformation.Path);
             Console.WriteLine("instrument_method -- " + rawFile.SampleInformation.InstrumentMethodFile);
             Console.WriteLine("process_method -- " + rawFile.SampleInformation.ProcessingMethodFile);
             Console.WriteLine("positiion -- " + rawFile.SampleInformation.Vial);
