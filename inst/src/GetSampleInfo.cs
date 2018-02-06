@@ -70,8 +70,11 @@ internal static class Program
             Console.WriteLine("class -- " + rawFile.SampleInformation.UserText[2]);
             Console.WriteLine("inj_order -- " + rawFile.SampleInformation.UserText[3]);
             Console.WriteLine("sample_order -- " + rawFile.SampleInformation.UserText[4]);
-
+            Console.WriteLine("creation_date -- " + rawFile.FileHeader.CreationDate);
+            Console.WriteLine("instrument_name -- " + rawFile.GetInstrumentData().Name);
+            Console.WriteLine("instrument_model -- " + rawFile.GetInstrumentData().Model);
+            Console.WriteLine("instrument_serial -- " + rawFile.GetInstrumentData().SerialNumber);
+            Console.WriteLine("software_version -- " + rawFile.GetInstrumentData().SoftwareVersion);
         }
     }
-
 }
