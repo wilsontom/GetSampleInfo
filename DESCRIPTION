@@ -1,7 +1,7 @@
 Package: GetSampleInfo
 Type: Package
 Title: Extract Sample Information from Thermo .RAW files
-Version: 0.1.0
+Version: 0.2.0
 Author: Tom Wilson <tpw2@aber.ac.uk>
 Maintainer: Tom Wilson <tpw2@aber.ac.uk>
 Description: R wrapper for the Thermo C# RawFileReader. 
