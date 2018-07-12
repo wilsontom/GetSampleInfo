@@ -4,7 +4,7 @@
 #' are accessed using the cross-platform C# RawFileReader.
 #'
 #' @param x a \code{.raw} file
-#' @return a \code{data.frame} of sample information
+#' @return a \code{tibble} of sample information
 #' @importFrom tibble as_tibble
 #' @export
 
