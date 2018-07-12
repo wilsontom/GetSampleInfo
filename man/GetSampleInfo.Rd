@@ -10,7 +10,7 @@ GetSampleInfo(x)
 \item{x}{a \code{.raw} file}
 }
 \value{
-a \code{data.frame} of sample information
+a \code{tibble} of sample information
 }
 \description{
 Extract all fields contained in the \code{SampleInformation} block of Thermo \code{.raw} files. \code{.raw} files
