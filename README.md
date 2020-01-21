@@ -56,7 +56,28 @@ R CMD INSTALL GetSampleInfo_0.4.0.tar.gz
 
 
 ```R
-library(GetSampleInfo)
+> library(GetSampleInfo)
 
-GetSampleInfo('QC01.raw')
+> TestFile <- system.file('extdata/QC01.raw', package = 'GetSampleInfo')
+
+> SampleInfo <- GetSampleInfo(TestFile)
+
+> InstrumentName <- GetInstrumentName(TestFile)
+> InstrumentName
+$instrument_name
+[1] "Thermo Exactive Orbitrap"
+
+$instrument_model
+[1] "Exactive Orbitrap"
+
+$instrument_serial
+[1] "Exactive slot #1"
+
+> ScanFilters <- GetScanFilters(TestFile)
+> ScanFilters 
+# A tibble: 2 x 1
+  ScanFilter                                
+  <chr>                                     
+1 FTMS {1,1} - p ESI Full ms [63.00-1000.00]
+2 FTMS {1,2} + p ESI Full ms [55.00-1000.00]
 ```
