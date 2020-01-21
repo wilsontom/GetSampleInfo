@@ -43,6 +43,14 @@ cd inst/
 
 If everything has worked there should now be four `.exe` files in the `inst/bin/RawFileReader` directory.
 
+The package can be installed from source using the following
+
+```sh
+R CMD build GetSampleInfo
+
+R CMD INSTALL GetSampleInfo_0.4.0.tar.gz
+```
+
 
 #### Usage
 
