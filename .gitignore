@@ -2,4 +2,4 @@
 .Rhistory
 .RData
 .Ruserdata
-bin/RawFileReader/
+inst/bin/RawFileReader/
