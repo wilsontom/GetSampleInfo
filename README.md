@@ -1,6 +1,6 @@
 # GetSampleInfo
 
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [License](https://img.shields.io/badge/license-GNU%20GPL%20v3.0-blue.svg "GNU GPL v3.0")
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) ![License](https://img.shields.io/badge/license-GNU%20GPL%20v3.0-blue.svg "GNU GPL v3.0")
 
 >__R Wrapper to the Thermo C# RawFileReader__
 
@@ -41,7 +41,7 @@ cd inst/
 ./compile.sh
 ```
 
-If everyything has worked there should now be four `.exe` files in the `inst/bin/RawFileReader` directory.
+If everything has worked there should now be four `.exe` files in the `inst/bin/RawFileReader` directory.
 
 
 #### Usage
