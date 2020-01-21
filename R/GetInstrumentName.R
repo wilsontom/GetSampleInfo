@@ -2,8 +2,8 @@
 #'
 #' Extract instrumment identification fields
 #'
-#' @param x a \code{.raw} file
-#' @return a \code{list} of four elements
+#' @param x a `.raw` file
+#' @return a `list` of four elements
 #' @export
 
 GetInstrumentName <- function(x)

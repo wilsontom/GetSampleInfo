@@ -1,10 +1,10 @@
 #' Get Sample Information
 #'
-#' Extract all fields contained in the \code{SampleInformation} block of Thermo \code{.raw} files. \code{.raw} files
+#' Extract all fields contained in the `SampleInformation` block of Thermo `.raw` files. `.raw` files
 #' are accessed using the cross-platform C# RawFileReader.
 #'
-#' @param x a \code{.raw} file
-#' @return a \code{tibble} of sample information
+#' @param x a `.raw` file
+#' @return a `tibble` of sample information
 #' @importFrom tibble as_tibble
 #' @export
 

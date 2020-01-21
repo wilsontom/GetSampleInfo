@@ -1,9 +1,9 @@
 #' Get Scan Filters
 #'
-#' Extract all unique scan filters available in the \code{.raw} file
+#' Extract all unique scan filters available in the `.raw` file
 #'
-#' @param x a \code{.raw} file
-#' @return a \code{tibble} of scan filters
+#' @param x a `.raw` file
+#' @return a `tibble` of scan filters
 #' @export
 
 GetScanFilters <- function(x)
