@@ -1,9 +1,3 @@
-// Tom Wilson <tpw2@aber.ac.uk>
-//
-// 2018-02-05
-//
-// Access Sample Information
-
 namespace RawFileReaderGetSampleInfo
 {
     using System;
@@ -14,9 +8,6 @@ namespace RawFileReaderGetSampleInfo
 
     using ThermoFisher.CommonCore.Data;
     using ThermoFisher.CommonCore.Data.Business;
-//  using ThermoFisher.CommonCore.Data.FilterEnums;
-//  using ThermoFisher.CommonCore.Data.Interfaces;
-//  using ThermoFisher.CommonCore.MassPrecisionEstimator;
     using ThermoFisher.CommonCore.RawFileReader;
 
 internal static class Program
