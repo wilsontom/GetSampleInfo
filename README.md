@@ -1,31 +1,50 @@
 # GetSampleInfo
 
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [License](https://img.shields.io/badge/license-GNU%20GPL%20v3.0-blue.svg "GNU GPL v3.0")
+
 >__R Wrapper to the Thermo C# RawFileReader__
 
+#### Installation
 
+To use, you first need to obtain a copy of Thermo's RawFileReader, see details [here](https://planetorbitrap.com/rawfilereader). 
 
-#### Compiling C# Source
+**GetSampleInfo** requires two of the C# assemblies to be included in the `inst` directory prior to package installation.
 
-The compiled `.exe` for `GetSampleInfo` is located in `/inst/bin/RawFileReader` but if needed can be re-compiled using the following;
+```sh
+# Create the following directory
 
-> To compile on Linux, mono-develop must be installed
+mkdir /inst/bin
+mkdir inst/RawFileReader
+
+# From your RawFileReader download; copy ThermoFisher.CommonCore.Data.dll and ThermoFisher.CommonCore.RawFileReader.dll into the directory you just created
+
+cp ThermoFisher.CommonCore.RawFileReader.dll /inst/bin/RawFileReader/
+cp ThermoFisher.CommonCore.RawFileReader.dll /inst/bin/RawFileReader/
+
+```
+
+You then need to compile the C# source files to executables that can be used in R. To do this you need the Mono C# Compiler.
+
+To install, follow the correct instructions [here](https://www.mono-project.com/download/stable/#download-lin).
+
 
 ```sh
 > mcs --version
-Mono C# compiler version 4.2.1.0
+Mono C# compiler version 6.8.0.96
 ```
-> From the R package root directory;
-```sh
-mcs src/GetSampleInfo.cs -r:inst/bin/RawFileReader/ThermoFisher.CommonCore.Data.dll -r:inst/bin/RawFileReader/ThermoFisher.CommonCore.RawFileReader.dll -out:inst/bin/RawFileReader/GetSampleInfo.exe
-```
+
+Once the DLLs are in the correct directory and the Mono C# Compiler is installed; then the C# source can be compiled using the `inst/compile.sh` script.
 
 ```sh
-> inst/bin/RawFileReader/GetSampleInfo.exe 
-No RAW file specified!
+chmod u+x inst/compile.sh
+cd inst/
+./compile.sh
 ```
 
+If everyything has worked there should now be four `.exe` files in the `inst/bin/RawFileReader` directory.
 
 
+#### Usage
 
 
 ```R
