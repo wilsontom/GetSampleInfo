@@ -1,9 +1,8 @@
 Package: GetSampleInfo
 Type: Package
 Title: Extract Sample Information from Thermo .RAW files
-Version: 0.3.0
-Author: Tom Wilson <tpw2@aber.ac.uk>
-Maintainer: Tom Wilson <tpw2@aber.ac.uk>
+Version: 0.4.0
+Authors@R: c(person("Tom", "Wilson", , "tpw2@aber.ac.uk", c("aut", "cre"),  comment = c(ORCID = "0000-0003-3112-4682")))
 Description: R wrapper for the Thermo C# RawFileReader. 
 License: GPL (>= 3)
 Encoding: UTF-8
