@@ -12,12 +12,7 @@ GetInstrumentName <- function(x)
     stop('input must be a .raw file')
   }
 
-  raw_file_read <-
-    system.file('bin/RawFileReader/GetInstrumentName.exe', package = 'GetSampleInfo')
-
-  input_cmd <- paste(raw_file_read, x, sep = ' ')
-
-  cmd_res <- as.list(system(input_cmd, intern = TRUE))
+  cmd_res <- as.list(run_rawfilereader('GetInstrumentName.exe', x))
 
   res_split <- lapply(cmd_res, function(x)
     (strsplit(x, ' -- ')))
