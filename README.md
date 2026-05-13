@@ -6,51 +6,44 @@
 
 #### Installation
 
-To use, you first need to obtain a copy of Thermo's RawFileReader, see details [here](https://planetorbitrap.com/rawfilereader). 
+To use, you first need to obtain a copy of Thermo's RawFileReader, see details [here](https://planetorbitrap.com/rawfilereader).
 
-**GetSampleInfo** requires two of the C# assemblies to be included in the `inst` directory prior to package installation.
+**GetSampleInfo** requires two Thermo C# assemblies at install time:
+
+- `ThermoFisher.CommonCore.Data.dll`
+- `ThermoFisher.CommonCore.RawFileReader.dll`
+
+Keep those DLLs outside the repo and point `THERMO_RAWFILEREADER_HOME` at the directory containing them.
 
 ```sh
-# Create the following directory
-
-mkdir /inst/bin
-mkdir inst/RawFileReader
-
-# From your RawFileReader download; copy ThermoFisher.CommonCore.Data.dll and ThermoFisher.CommonCore.RawFileReader.dll into the directory you just created
-
-cp ThermoFisher.CommonCore.RawFileReader.dll /inst/bin/RawFileReader/
-cp ThermoFisher.CommonCore.RawFileReader.dll /inst/bin/RawFileReader/
-
+export THERMO_RAWFILEREADER_HOME=/full/path/to/RawFileReader
 ```
 
-You then need to compile the C# source files to executables that can be used in R. To do this you need the Mono C# Compiler.
+On macOS and Linux you also need Mono so the C# sources can be compiled and the generated `.exe` files can be run.
 
 To install, follow the correct instructions [here](https://www.mono-project.com/download/stable/#download-lin).
 
-
 ```sh
-> mcs --version
+mcs --version
 Mono C# compiler version 6.8.0.96
 ```
 
-Once the DLLs are in the correct directory and the Mono C# Compiler is installed; then the C# source can be compiled using the `inst/compile.sh` script.
+With `THERMO_RAWFILEREADER_HOME` set, package installation will copy the DLLs into `inst/bin/RawFileReader/` and compile the C# readers automatically.
 
 ```sh
-chmod u+x inst/compile.sh
-cd inst/
-./compile.sh
-```
-
-If everything has worked there should now be four `.exe` files in the `inst/bin/RawFileReader` directory.
-
-The package can be installed from source using the following
-
-```sh
-R CMD build GetSampleInfo
-
+R CMD build .
 R CMD INSTALL GetSampleInfo_0.4.0.tar.gz
 ```
 
+For local development you can also populate the DLLs and compile explicitly:
+
+```sh
+THERMO_RAWFILEREADER_HOME=/full/path/to/RawFileReader bash inst/compile.sh
+```
+
+If everything has worked there should now be three `.exe` files in `inst/bin/RawFileReader/`.
+
+If `THERMO_RAWFILEREADER_HOME` is not set, or the DLLs cannot be found, the package will still install but the exported functions will fail with a clear runtime error until the readers are compiled.
 
 #### Usage
 
