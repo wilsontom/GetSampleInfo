@@ -1,5 +1,10 @@
 ## NEWS
 
+### 0.4.1
+
+* Improve package structure and installation
+* Testing coverage
+
 ### 0.4.0
 
 * Add `GetPrecursorMasses` function (no new C# source)
