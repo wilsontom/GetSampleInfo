@@ -1,7 +1,26 @@
+find_rawfilereader_exe_path <- function(exe_name)
+{
+  system.file(file.path("bin", "RawFileReader", exe_name), package = "GetSampleInfo")
+}
+
+rawfilereader_os_type <- function()
+{
+  .Platform$OS.type
+}
+
+find_mono <- function()
+{
+  Sys.which("mono")
+}
+
+run_system2 <- function(command, args)
+{
+  system2(command, args, stdout = TRUE, stderr = TRUE)
+}
+
 rawfilereader_exe <- function(exe_name)
 {
-  exe_path <-
-    system.file(file.path('bin', 'RawFileReader', exe_name), package = 'GetSampleInfo')
+  exe_path <- find_rawfilereader_exe_path(exe_name)
 
   if (!nzchar(exe_path)) {
     stop(
@@ -21,11 +40,11 @@ rawfilereader_exe <- function(exe_name)
 
 rawfilereader_command <- function(exe_path)
 {
-  if (.Platform$OS.type == 'windows') {
+  if (rawfilereader_os_type() == "windows") {
     return(list(command = exe_path, args = character()))
   }
 
-  mono <- Sys.which('mono')
+  mono <- find_mono()
 
   if (!nzchar(mono)) {
     stop(
@@ -48,7 +67,7 @@ run_rawfilereader <- function(exe_name, x)
 
   exe_path <- rawfilereader_exe(exe_name)
   command <- rawfilereader_command(exe_path)
-  output <- system2(command$command, c(command$args, x), stdout = TRUE, stderr = TRUE)
+  output <- run_system2(command$command, c(command$args, x))
   status <- attr(output, 'status')
 
   if (!is.null(status) && status != 0) {
