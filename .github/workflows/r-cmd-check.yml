@@ -1,4 +1,4 @@
-name: build-and-test
+name: r-cmd-check
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  build-and-check:
+  r-cmd-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,9 +17,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: |
-            any::rcmdcheck
-            any::testthat
+          extra-packages: any::rcmdcheck
           needs: check
 
       - name: Build source package
