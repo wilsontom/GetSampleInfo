@@ -12,14 +12,8 @@ GetScanFilters <- function(x)
     stop('input must be a .raw file')
   }
 
-  raw_file_read <-
-    system.file('bin/RawFileReader/GetScanFilters.exe', package = 'GetSampleInfo')
-
-  input_cmd <- paste(raw_file_read, x, sep = ' ')
-
-  cmd_res <- tibble::as.tibble(system(input_cmd, intern = TRUE))
-
-  names(cmd_res) <- 'ScanFilter'
+  cmd_res <- run_rawfilereader('GetScanFilters.exe', x)
+  cmd_res <- tibble::tibble(ScanFilter = cmd_res)
 
   return(cmd_res)
 }
