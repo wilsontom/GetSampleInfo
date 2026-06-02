@@ -1,5 +1,7 @@
 library(GetSampleInfo)
 
+pkg_ns <- asNamespace("GetSampleInfo")
+
 make_raw_file <- function()
 {
   path <- tempfile(fileext = ".raw")
@@ -7,10 +9,17 @@ make_raw_file <- function()
   path
 }
 
+test_that("rawfilereader helper accessors delegate to base lookups", {
+  expect_true(file.exists(GetSampleInfo:::find_rawfilereader_exe_path("KEEP")))
+  expect_equal(GetSampleInfo:::rawfilereader_os_type(), .Platform$OS.type)
+  expect_equal(GetSampleInfo:::find_mono(), Sys.which("mono"))
+  expect_equal(GetSampleInfo:::run_system2("printf", "hello"), "hello")
+})
+
 test_that("rawfilereader_exe reports a missing executable clearly", {
   testthat::local_mocked_bindings(
     find_rawfilereader_exe_path = function(exe_name) "",
-    .package = "GetSampleInfo"
+    .env = pkg_ns
   )
 
   expect_error(
@@ -23,7 +32,7 @@ test_that("rawfilereader_exe reports a missing executable clearly", {
 test_that("rawfilereader_command handles platform-specific launchers", {
   testthat::local_mocked_bindings(
     rawfilereader_os_type = function() "windows",
-    .package = "GetSampleInfo"
+    .env = pkg_ns
   )
 
   expect_equal(
@@ -34,7 +43,7 @@ test_that("rawfilereader_command handles platform-specific launchers", {
   testthat::local_mocked_bindings(
     rawfilereader_os_type = function() "unix",
     find_mono = function() "/usr/bin/mono",
-    .package = "GetSampleInfo"
+    .env = pkg_ns
   )
 
   expect_equal(
@@ -47,13 +56,25 @@ test_that("rawfilereader_command errors when mono is unavailable", {
   testthat::local_mocked_bindings(
     rawfilereader_os_type = function() "unix",
     find_mono = function() "",
-    .package = "GetSampleInfo"
+    .env = pkg_ns
   )
 
   expect_error(
     GetSampleInfo:::rawfilereader_command("/tmp/GetSampleInfo.exe"),
     "'mono' is required to run RawFileReader executables on this platform.",
     fixed = TRUE
+  )
+})
+
+test_that("rawfilereader_exe returns the installed executable path", {
+  testthat::local_mocked_bindings(
+    find_rawfilereader_exe_path = function(exe_name) file.path("/tmp", exe_name),
+    .env = pkg_ns
+  )
+
+  expect_equal(
+    GetSampleInfo:::rawfilereader_exe("GetSampleInfo.exe"),
+    "/tmp/GetSampleInfo.exe"
   )
 })
 
@@ -71,7 +92,7 @@ test_that("run_rawfilereader returns command output on success", {
     rawfilereader_exe = function(exe_name) file.path("/tmp", exe_name),
     rawfilereader_command = function(exe_path) list(command = "mono", args = exe_path),
     run_system2 = function(command, args) c("field -- value"),
-    .package = "GetSampleInfo"
+    .env = pkg_ns
   )
 
   expect_equal(
@@ -88,7 +109,7 @@ test_that("run_rawfilereader surfaces process failures", {
     run_system2 = function(command, args) {
       structure(c("first line", "second line"), status = 12)
     },
-    .package = "GetSampleInfo"
+    .env = pkg_ns
   )
 
   expect_error(
