@@ -1,7 +1,0 @@
-^.*\.Rproj$
-^\.Rproj\.user$
-^\.github$
-^AGENTS\.md$
-^inst/bin/RawFileReader/.*\.(exe|dll)$
-^GetSampleInfo\.Rcheck$
-^GetSampleInfo_[0-9.]+\.tar\.gz$
