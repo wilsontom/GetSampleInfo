@@ -15,6 +15,22 @@ test_that("GetSampleInfo rejects non-raw inputs", {
   )
 })
 
+test_that("GetInstrumentName rejects non-raw inputs", {
+  expect_error(
+    GetInstrumentName(tempfile(fileext = ".txt")),
+    "input must be a .raw file",
+    fixed = TRUE
+  )
+})
+
+test_that("GetScanFilters rejects non-raw inputs", {
+  expect_error(
+    GetScanFilters(tempfile(fileext = ".txt")),
+    "input must be a .raw file",
+    fixed = TRUE
+  )
+})
+
 test_that("GetSampleInfo parses key-value output into a tibble", {
   raw_file <- make_raw_file()
   testthat::local_mocked_bindings(
