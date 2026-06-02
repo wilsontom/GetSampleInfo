@@ -1,5 +1,8 @@
 # GetSampleInfo
 
+[![R-CMD-check](https://github.com/wilsontom/GetSampleInfo/actions/workflows/R-CMD-check.yaml/badge.svg?branch=master)](https://github.com/wilsontom/GetSampleInfo/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/wilsontom/GetSampleInfo/actions/workflows/test-coverage.yaml/badge.svg?branch=master)](https://github.com/wilsontom/GetSampleInfo/actions/workflows/test-coverage.yaml)
+[![Test coverage](https://raw.githubusercontent.com/wilsontom/GetSampleInfo/coverage/badges/coverage.svg)](https://github.com/wilsontom/GetSampleInfo/actions/workflows/test-coverage.yaml)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable) ![License](https://img.shields.io/badge/license-GNU%20GPL%20v3.0-blue.svg "GNU GPL v3.0")
 
 >__R Wrapper to the Thermo C# RawFileReader__
@@ -32,7 +35,7 @@ With `THERMO_RAWFILEREADER_HOME` set, package installation will copy the DLLs in
 
 ```sh
 R CMD build .
-R CMD INSTALL GetSampleInfo_0.4.0.tar.gz
+R CMD INSTALL GetSampleInfo_0.4.1.tar.gz
 ```
 
 For local development you can also populate the DLLs and compile explicitly:
